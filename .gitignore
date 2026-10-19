@@ -1,0 +1,10 @@
+# Executável
+pag_frag
+
+# IDEs e Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
