@@ -50,7 +50,6 @@ int main() {
 
         // e atribuí-lo às páginas
         for (int j = 0; j < paginas_necessarias; ++j) {
-            cout << j << endl;
             bool pagina_livre_encontrada = false;
             
             bool alocou_tudo = false;
@@ -86,12 +85,25 @@ int main() {
                     if (processo_alocado[n] == i+1) {
                         memoria[n] = PAGE_SIZE;
                         processo_alocado[n] = 0;
+                        ocupada[n] = false;
                     }
                 }
                 break;
             }
         }
     }
+
+    // mostrar a tabela de paginação final
+        cout << "--[TABELA DE PÁGINA]--\n";
+        cout << "|Quadro|Processo|Frag|\n";
+        cout << "----------------------\n";
+        for (int p = 0; p < 8; ++p) {
+            cout << "| [" << p+1 << "]  |"
+            << " {P" << processo_alocado[p] << "}   "
+            << "|" << memoria[p] << "|"
+            << "\n|--------------------|\n";
+        }
+        cout << "A tabela de paginação ficou assim, ao final." << endl;
 
     return 0;
 }
