@@ -45,18 +45,19 @@ int main() {
         cin >> tam_processo;
 
         // calcular quantas páginas ele vai tomar
-        int paginas_necessarias = tam_processo / PAGE_SIZE;
-        if (paginas_necessarias == 0) paginas_necessarias = 1;
+        int paginas_necessarias = (tam_processo / PAGE_SIZE) + 1;
+        // if (paginas_necessarias == 0) paginas_necessarias = 1;
 
         // e atribuí-lo às páginas
         for (int j = 0; j < paginas_necessarias; ++j) {
-            
+            cout << j << endl;
             bool pagina_livre_encontrada = false;
-
+            
+            bool alocou_tudo = false;
             for (int k = 0; k < 8; ++k) {
-                
+            
                 if (!ocupada[k]) {
-                    bool alocou_tudo = false;
+                    
 
                     if (tam_processo > PAGE_SIZE) {
                         tam_processo -= PAGE_SIZE;
@@ -74,10 +75,19 @@ int main() {
 
                 }
             }
+            if (alocou_tudo) break;
 
             // Não tem como alocar o processo se não tem páginas suficientes pra ele
             if (!pagina_livre_encontrada) {
-                cout << "Não deu pra alocar o processo n° " << i + 1 << "(falta de página).\n";
+                cout << "Não deu pra alocar o processo n° " << i + 1 << " (falta de página).\n";
+
+                // Desalocar o espaço gasto por ele até agora
+                for (int n = 0; n < 8; ++n) {
+                    if (processo_alocado[n] == i+1) {
+                        memoria[n] = 1024;
+                        processo_alocado[n] = 0;
+                    }
+                }
                 break;
             }
         }
