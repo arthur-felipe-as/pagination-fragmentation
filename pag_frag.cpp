@@ -27,7 +27,7 @@ int main() {
     // Para cada processo...
     for (int i = 0; i < num_processos; ++i) {
 
-        // Primeiro se mostra a tabela de paginação
+        // primeiro se mostra a tabela de paginação,
         cout << "--[TABELA DE PÁGINA]--\n";
         cout << "|Quadro|Processo|Frag|\n";
         cout << "----------------------\n";
@@ -39,7 +39,7 @@ int main() {
         }
 
 
-        // é preciso saber seu tamanho,
+        // então é preciso saber seu tamanho,
         int tam_processo;
         cout << "Manda o tamanho do processo n° " << i + 1 << ", em bytes: ";
         cin >> tam_processo;
@@ -84,7 +84,7 @@ int main() {
                 // Desalocar o espaço gasto por ele até agora
                 for (int n = 0; n < 8; ++n) {
                     if (processo_alocado[n] == i+1) {
-                        memoria[n] = 1024;
+                        memoria[n] = PAGE_SIZE;
                         processo_alocado[n] = 0;
                     }
                 }
