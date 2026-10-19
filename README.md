@@ -5,7 +5,7 @@ Simulador para análise e visualização dos conceitos de **paginação** e **fr
 ---
 
 ### Pré-requisitos
-* Compilador **GCC / Clang** (para C/C++) ou ambiente **Python/Node.js** (de acordo com a linguagem utilizada no repositório).
+* Compilador **GCC / Clang** (para C/C++)
 
 ## Como Executar
 
