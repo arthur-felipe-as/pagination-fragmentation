@@ -46,6 +46,7 @@ int main() {
 
         // calcular quantas páginas ele vai tomar
         int paginas_necessarias = tam_processo / PAGE_SIZE;
+        if (paginas_necessarias == 0) paginas_necessarias = 1;
 
         // e atribuí-lo às páginas
         for (int j = 0; j < paginas_necessarias; ++j) {
